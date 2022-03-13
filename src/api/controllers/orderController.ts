@@ -11,15 +11,12 @@ const stripe = new Stripe(stripeKey, {
   typescript: true,
 });
 
-// Todo - Post order
-
 export const getAllOrders = (req: Request, res: Response) => {
   Order.find()
     .exec()
     .then((docs: any) => res.status(200).json(docs))
     .catch((err: any) => {
-      res.status(500);
-      throw new Error(err);
+      res.status(500).json({ error: err });
     });
 };
 
@@ -35,8 +32,7 @@ export const getUserOrders = (req: Request, res: Response) => {
       res.status(200).json(orders);
     })
     .catch((err: any) => {
-      res.status(500);
-      throw new Error(err);
+      res.status(500).json({ error: err });
     });
 };
 
@@ -69,12 +65,10 @@ export const postOrder = async (req: Request, res: Response) => {
         });
       })
       .catch((err) => {
-        res.status(400);
-        throw new Error(err);
+        res.status(400).json({ error: err });
       });
   } catch (err: any) {
-    res.status(400);
-    throw new Error(err);
+    res.status(400).json({ error: err });
   }
 };
 
@@ -92,7 +86,6 @@ export const deleteOrder = (req: Request, res: Response) => {
       });
     })
     .catch((err: any) => {
-      res.status(500);
-      throw new Error(err);
+      res.status(500).json({ error: err });
     });
 };
