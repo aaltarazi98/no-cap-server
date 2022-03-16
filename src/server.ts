@@ -1,4 +1,4 @@
-import express, { Application } from "express";
+import express, { Application, Request, Response } from "express";
 import productRoutes from "./api/routes/productRoutes";
 import orderRoutes from "./api/routes/orderRoutes";
 import dotenv from "dotenv";
@@ -23,9 +23,13 @@ const app: Application = express();
 
 app.use(cors(options));
 app.use(morgan("dev"));
-app.use("/uploads", express.static("uploads"));
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
+
+// Response for letting client know that the server is up.
+app.get("/api", (req: Request, res: Response) => {
+  res.status(200).json({ message: "Server is running!" });
+});
 
 // Routes which should handle requests
 app.use("/api/orders", orderRoutes);

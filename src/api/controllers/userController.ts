@@ -65,7 +65,7 @@ export const signUp = (req: Request, res: Response) => {
       }
     })
     .catch((err: any) => {
-      console.log(err);
+      res.status(500).json({ error: err });
     });
 };
 
