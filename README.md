@@ -10,9 +10,9 @@ Check out the front end repository over at: https://github.com/aaltarazi98/no-ca
 
 ## Built With 🖥️
 
-**Client:** React, Redux, React Router, and Material UI
+**Client:** React, Redux, React Router, Material UI, Stripe. Hosted on Netlify.
 
-**Server:** Node, Express, Mongoose
+**Server:** Node, Express, Mongoose, Stripe. Hosted on Heroku.
 
 **Database:** MongoDB Atlas
 
